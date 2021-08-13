@@ -15,14 +15,12 @@ public class Main {
         list.add("Tom");
         list.add("Joker");
         list.add("Agat");
-        System.out.println(list);
-        System.out.println(uniqueSet1(list));
-        System.out.println(list);
-        System.out.println(uniqueSet2(list));
-        System.out.println(list);
+        System.out.println("Список строк " + list);
+        System.out.println("Cписок из уникальных значений (с использованием Set) " + uniqueSet(list));
+        System.out.println("Cписок из уникальных значений (без использования Set) " + uniqueList(list));
     }
 
-    public static Set uniqueSet1(List list) {
+    public static Set uniqueSet(List list) {
         Set<String> hashSet = new HashSet<>();
         for (Object var : list) {
             hashSet.add((String) var);
@@ -30,20 +28,23 @@ public class Main {
         return hashSet;
     }
 
-    public static List uniqueSet2(List list) {
-        List<String> list1 = new ArrayList<>();
-        boolean flag = true;
-        for (int j = 0; j < list.size(); j++) {
-            String var = (String) list.get(j);
-            if (flag) {
-                list1.add(var);
-            }
-            for (int i = 0; i < list1.size(); i++) {
-                    if (var.equals(list1.get(i))) {
-                        flag = false;
-                    }
+    public static List uniqueList(List list) {
+        List<String> uniquelist = new ArrayList<>();
+        String elem = (String) list.get(0);
+        uniquelist.add(elem);
+        for (int i = 1; i < list.size(); i++) {
+            boolean flag = false;
+            elem = (String) list.get(i);
+            for (String s : uniquelist) {
+                flag = elem.equals(s);
+                if (flag) {
+                    break;
                 }
             }
-       return list1;
+            if (!flag) {
+                uniquelist.add(elem);
+            }
+        }
+        return uniquelist;
     }
 }
