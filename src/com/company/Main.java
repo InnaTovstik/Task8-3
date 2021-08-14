@@ -12,9 +12,9 @@ public class Main {
         list.add("Tom");
         list.add("Joker");
         list.add("Agat");
-        list.add("Tom");
         list.add("Joker");
         list.add("Agat");
+        list.add("Tom");
         System.out.println("Список строк " + list);
         System.out.println("Cписок из уникальных значений (с использованием Set) " + uniqueSet(list));
         System.out.println("Cписок из уникальных значений (без использования Set) " + uniqueList(list));
@@ -36,7 +36,7 @@ public class Main {
             boolean flag = false;
             elem = (String) list.get(i);
             for (String s : uniquelist) {
-                flag = elem.equals(s);
+                flag = s.contains(elem);
                 if (flag) {
                     break;
                 }
