@@ -20,21 +20,17 @@ public class Main {
         System.out.println("Cписок из уникальных значений (без использования Set) " + uniqueList(list));
     }
 
-    public static Set uniqueSet(List list) {
-        Set<String> hashSet = new HashSet<>();
-        for (Object var : list) {
-            hashSet.add((String) var);
-        }
-        return hashSet;
+    public static Set<String> uniqueSet(List<String> list) {
+        return new HashSet<>(list);
     }
 
-    public static List uniqueList(List list) {
+    public static List<String> uniqueList(List<String> list) {
         List<String> uniquelist = new ArrayList<>();
-        String elem = (String) list.get(0);
+        String elem = list.get(0);
         uniquelist.add(elem);
         for (int i = 1; i < list.size(); i++) {
             boolean flag = false;
-            elem = (String) list.get(i);
+            elem = list.get(i);
             for (String s : uniquelist) {
                 flag = s.contains(elem);
                 if (flag) {
