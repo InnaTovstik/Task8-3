@@ -24,23 +24,13 @@ public class Main {
         return new HashSet<>(list);
     }
 
-    public static List<String> uniqueList(List<String> list) {
+    public static List<String> uniqueList( List<String> list) {
         List<String> uniquelist = new ArrayList<>();
-        String elem = list.get(0);
-        uniquelist.add(elem);
-        for (int i = 1; i < list.size(); i++) {
-            boolean flag = false;
-            elem = list.get(i);
-            for (String s : uniquelist) {
-                flag = s.contains(elem);
-                if (flag) {
-                    break;
-                }
+        for (String o : list) {
+            if (!uniquelist.contains(o)) {
+                uniquelist.add(o);
             }
-            if (!flag) {
-                uniquelist.add(elem);
-            }
-        }
-        return uniquelist;
+         }
+        return  uniquelist;
     }
 }
